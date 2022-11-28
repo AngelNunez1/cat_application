@@ -1,34 +1,27 @@
 import 'dart:convert';
 
-class Planet {
+class Cat {
   final int?id;
-  final String Description;
-  final String Type;
-  final String Size;
-  final String Image;
   final String Name;
+  final String Race;
+  final String Image;
+  final String Food;
 
-  Planet(
+  Cat(
   {
-    this.id, required this.Description, required this.Type, required this.Size, required this.Image, required this.Name
+    this.id,  required this.Name, required this.Race, required this.Image, required this.Food
   }
   );
-  factory Planet.formMap(Map<String, dynamic> json) => 
-    Planet(id: json['id'], Description: json['Description'], Type: json['Type'], Size: json['Size'], Image: json['Image'], Name: json['Name']);
+  factory Cat.formMap(Map<String, dynamic> json) => 
+    Cat(id: json['id'], Name: json['Name'], Race: json['Race'], Image: json['Image'], Food: json['Food']);
 
     Map<String, dynamic> toMap(){
       return{
         'id': id,
-        'Description': Description,
-        'Type': Type,
-        'Size': Size,
-        'Image': Image,
         'Name': Name,
+        'Race': Race,
+        'Image': Image,
+        'Food': Food,
       };
     }
 }
-
-
-
-
-

@@ -1,6 +1,5 @@
 import 'package:camera/camera.dart';
 import 'package:cat_application/helpers/database_helper.dart';
-import 'package:cat_application/screens/contact.dart';
 import 'package:cat_application/screens/details_page.dart';
 import 'package:cat_application/screens/taken_picture_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-
 import '../models/cat_model.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -46,7 +44,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Planets',
+                          'Cats',
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Poppins',
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -54,7 +52,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                         ),
                         Text(
-                          'Solar system',
+                          'Beautiful cats',
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Poppins',
@@ -64,34 +62,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 5),
-                    child: FlutterFlowIconButton(
-                      borderColor: Color.fromARGB(65, 0, 0, 0),
-                      borderRadius: 30,
-                      borderWidth: 2,
-                      buttonSize: 60,
-                      fillColor: Color(0x003F2D1C),
-                      icon: Icon(
-                        Icons.search,
-                        color: Color.fromARGB(135, 0, 0, 0),
-                        size: 30,
-                      ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
-                    ),
-                  ),
                 ],
               ),
 
 
               Expanded(
-                child: (FutureBuilder<List<Planet>>(
-                  future: DatabaseHelper.instance.getPlanets(),
+                child: (FutureBuilder<List<Cat>>(
+                  future: DatabaseHelper.instance.getCats(),
                   builder: (
                     BuildContext context,
-                    AsyncSnapshot<List<Planet>> snapshot
+                    AsyncSnapshot<List<Cat>> snapshot
                     ){
                       if(!snapshot.hasData){
                         return Center(
@@ -104,7 +84,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             return snapshot.data!.isEmpty ?
                             Center(
                               child: Container(
-                                child: const Text("No Planets")
+                                child: const Text("No Cats :(")
                                 ),
                             )
 
@@ -126,11 +106,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   setState(() {
                                     final route = MaterialPageRoute(builder: (context) => DetailsScreenWidget(
                                       firstCamera: widget.firstCamera,
-                                      Description: planet.Description,
-                                      Image: planet.Image,
                                       Name: planet.Name,
-                                      Size: planet.Size,
-                                      Type: planet.Type,
+                                      Image: planet.Image,
+                                      Race: planet.Race,
+                                      Food: planet.Food,
                                       ));
                                     Navigator.push(context, route);
             
@@ -180,10 +159,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 180, 0),
                       child: FFButtonWidget(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const MyApp()),
-                          );
+                           print('Button pressed ...');
                         },
                         text: '',
                         icon: FaIcon(
@@ -237,185 +213,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ],
                 ),
               ),
-
-              //new
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Mercury.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Mercury',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/venus.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Venus',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Earth.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Earth',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Mars.png',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Mars',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Jupiter.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Jupiter',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Saturn.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Saturn',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/Uranus.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Uranus',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              'assets/images/neptune.jpg',
-                              width: 125,
-                              height: 125,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Neptune',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-
             ],
           ),
         ),

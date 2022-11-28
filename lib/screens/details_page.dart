@@ -6,14 +6,13 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class DetailsScreenWidget extends StatefulWidget {
-  final String Description;
-  final String Type;
-  final String Size;
-  final String Image;
   final String Name;
+  final String Race;
+  final String Image;
+  final String Food;
   final CameraDescription firstCamera;
 
-  const DetailsScreenWidget({Key? key, required this.firstCamera, required this.Description, required this.Type, required this.Size, required this.Image, required this.Name}) : super(key: key);
+  const DetailsScreenWidget({Key? key, required this.firstCamera, required this.Name, required this.Race, required this.Image, required this.Food}) : super(key: key);
 
   @override
   _DetailsScreenWidgetState createState() => _DetailsScreenWidgetState();
@@ -132,12 +131,12 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
-                      child: Text('Type')
+                      child: Text('Race')
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Text(
-                        widget.Type,
+                        widget.Race,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.bold,
@@ -148,12 +147,12 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
 
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                      child: Text('Size')
+                      child: Text('Food')
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                       child: Text(
-                        widget.Size,
+                        widget.Food,
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.bold,
@@ -161,35 +160,6 @@ class _DetailsScreenWidgetState extends State<DetailsScreenWidget> {
                       ),
                     ),
                   ],
-                ),
-              ),
-              
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30, 20, 0, 0),
-                child: Text(
-                  'Details',
-                  style: FlutterFlowTheme.of(context).subtitle1.override(
-                        fontFamily: 'Poppins',
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 150, 150, 150),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(7, 7, 7, 7),
-                    child: Text(
-                      widget.Description,
-                      style: FlutterFlowTheme.of(context).bodyText1,
-                    ),
-                  ),
                 ),
               ),
             ],

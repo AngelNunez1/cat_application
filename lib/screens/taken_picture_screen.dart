@@ -41,7 +41,7 @@ class _TakenPictureScreenState extends State<TakenPictureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Take a picture'),
+        title: const Text('Take a of your Cat'),
         backgroundColor: Color.fromARGB(255, 47, 0, 255),
         elevation: 0,
         ),
